@@ -26,6 +26,7 @@ public class HelloController {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         APIservicio apiService = retrofit.create(APIservicio.class);
         Call<Tiempo> call = apiService.obtenerTiempo(ciudad, apiKey, "metric");
 
@@ -34,15 +35,17 @@ public class HelloController {
             public void onResponse(Call<Tiempo> call, Response<Tiempo> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Tiempo tiempo = response.body();
+
                     mostrarDatosTextfield.setText(String.format("Temperatura en %s es: %.2f°C", ciudad, tiempo.main.temp));
+
                 } else {
                     mostrarDatosTextfield.setText("Error al obtener el clima de dicha. Ciudad no encontrada. Vuelva a intentarlo por favor");
                 }
             }
 
             @Override
-            public void onFailure(Call<Tiempo> call, Throwable t) {
-                mostrarDatosTextfield.setText("Error de conexión: " + t.getMessage());
+            public void onFailure(Call<Tiempo> call, Throwable ilo) {
+                mostrarDatosTextfield.setText("Ha habido un error de conexión intentalo otra vez por favor: " + ilo.getMessage());
             }
         });
     }
