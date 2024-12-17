@@ -26,7 +26,6 @@ public class HelloController {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-
         APIservicio apiService = retrofit.create(APIservicio.class);
         Call<Tiempo> call = apiService.obtenerTiempo(ciudad, apiKey, "metric");
 
