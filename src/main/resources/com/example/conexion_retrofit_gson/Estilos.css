@@ -1,0 +1,41 @@
+/*
+Faris Mohamed Amine
+2 dam
+*/
+
+
+.root {
+    -fx-font-family: "Arial";
+}
+
+.label {
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+}
+
+
+.label.title {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 74px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5;
+}
+
+
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+

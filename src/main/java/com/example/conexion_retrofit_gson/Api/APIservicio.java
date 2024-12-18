@@ -1,5 +1,10 @@
-package com.example.conexion_retrofit_gson;
+/*Faris Mohamed Amine
+2 dam */
 
+
+package com.example.conexion_retrofit_gson.Api;
+
+import com.example.conexion_retrofit_gson.Controladores.Tiempo;
 import retrofit2.http.GET;
 import retrofit2.Call;
 import retrofit2.http.Query;

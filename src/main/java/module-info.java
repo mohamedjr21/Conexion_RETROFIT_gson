@@ -9,4 +9,8 @@ module com.example.conexion_retrofit_gson {
 
     opens com.example.conexion_retrofit_gson to javafx.fxml, com.google.gson;
     exports com.example.conexion_retrofit_gson;
+    exports com.example.conexion_retrofit_gson.Api;
+    opens com.example.conexion_retrofit_gson.Api to com.google.gson, javafx.fxml;
+    exports com.example.conexion_retrofit_gson.Controladores;
+    opens com.example.conexion_retrofit_gson.Controladores to com.google.gson, javafx.fxml;
 }

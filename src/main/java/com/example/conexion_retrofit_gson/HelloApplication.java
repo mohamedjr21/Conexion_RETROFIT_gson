@@ -1,3 +1,9 @@
+/*
+Faris Mohamed Amine
+2 dam
+*/
+
+
 package com.example.conexion_retrofit_gson;
 
 import javafx.application.Application;
@@ -13,7 +19,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 720, 500);
-        stage.setTitle("Hello!");
+        stage.setTitle("Tiempo");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -1,5 +1,11 @@
-package com.example.conexion_retrofit_gson;
+/*
+Faris Mohamed Amine
+2 dam
+*/
 
+package com.example.conexion_retrofit_gson.Controladores;
+
+import com.example.conexion_retrofit_gson.Api.APIservicio;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import retrofit2.Call;
@@ -9,7 +15,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HelloController {
-
     @FXML
     private TextField ciudadTextField;
     @FXML
@@ -35,16 +40,17 @@ public class HelloController {
                 if (response.isSuccessful() && response.body() != null) {
                     Tiempo tiempo = response.body();
 
-                    mostrarDatosTextfield.setText(String.format("Temperatura en %s es: %.2f°C", ciudad, tiempo.main.temp));
+                    mostrarDatosTextfield.setText(String.format("La temperatura en %s es: %.2f°C", ciudad, tiempo.main.temp));
 
                 } else {
-                    mostrarDatosTextfield.setText("Error al obtener el clima de dicha. Ciudad no encontrada. Vuelva a intentarlo por favor");
+
+                    mostrarDatosTextfield.setText("Ciudad no encontrada. Vuelva a intentarlo por favor.");
                 }
             }
 
             @Override
             public void onFailure(Call<Tiempo> call, Throwable ilo) {
-                mostrarDatosTextfield.setText("Ha habido un error de conexión intentalo otra vez por favor: " + ilo.getMessage());
+                mostrarDatosTextfield.setText("Ha habido un error de conexión, intentalo otra vez por favor: " + ilo.getMessage());
             }
         });
     }
