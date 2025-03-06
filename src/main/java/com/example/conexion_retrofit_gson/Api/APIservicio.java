@@ -11,13 +11,12 @@ import retrofit2.http.Query;
 
 
 public interface APIservicio {
-    @GET("weather")
-    Call<Tiempo> obtenerTiempo(
+  @GET("weather")
+  Call<Tiempo> obtenerTiempo(
 
-            @Query("q") String ciudad,
-            @Query("appid") String apiKey,
-            @Query("units") String unidades
+      @Query("q") String ciudad,
+      @Query("appid") String apiKey,
+      @Query("units") String unidades
 
-
-    );
+  );
 }

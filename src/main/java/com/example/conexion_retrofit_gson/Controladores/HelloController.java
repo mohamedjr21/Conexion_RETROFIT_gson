@@ -15,43 +15,49 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HelloController {
-    @FXML
-    private TextField ciudadTextField;
-    @FXML
-    private TextField mostrarDatosTextfield;
 
-    private final String apiKey = "9693c5a9f86ef1b1aa621cd546973a28";
+  @FXML
+  private TextField ciudadTextField;
+  @FXML
+  private TextField mostrarDatosTextfield;
 
-    @FXML
-    public void obtenerTiempo() {
-        String ciudad = ciudadTextField.getText();
+  private final String apiKey = "9693c5a9f86ef1b1aa621cd546973a28";
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.openweathermap.org/data/2.5/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+  @FXML
+  public void obtenerTiempo() {
 
-        APIservicio apiService = retrofit.create(APIservicio.class);
-        Call<Tiempo> call = apiService.obtenerTiempo(ciudad, apiKey, "metric");
+    String ciudad = ciudadTextField.getText();
 
-        call.enqueue(new Callback<Tiempo>() {
-            @Override
-            public void onResponse(Call<Tiempo> call, Response<Tiempo> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Tiempo tiempo = response.body();
+    Retrofit retrofit = new Retrofit.Builder()
+        .baseUrl("https://api.openweathermap.org/data/2.5/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
 
-                    mostrarDatosTextfield.setText(String.format("La temperatura en %s es: %.2f°C", ciudad, tiempo.main.temp));
+    APIservicio apiService = retrofit.create(APIservicio.class);
+    Call<Tiempo> call = apiService.obtenerTiempo(ciudad, apiKey, "metric");
 
-                } else {
+    call.enqueue(new Callback<Tiempo>() {
 
-                    mostrarDatosTextfield.setText("Ciudad no encontrada. Vuelva a intentarlo por favor.");
-                }
-            }
+      @Override
+      public void onResponse(Call<Tiempo> call, Response<Tiempo> response) {
+        if (response.isSuccessful() && response.body() != null) {
+          Tiempo tiempo = response.body();
 
-            @Override
-            public void onFailure(Call<Tiempo> call, Throwable ilo) {
-                mostrarDatosTextfield.setText("Ha habido un error de conexión, intentalo otra vez por favor: " + ilo.getMessage());
-            }
-        });
-    }
+          mostrarDatosTextfield.setText(String.format("La temperatura en %s es: %.2f°C", ciudad, tiempo.main.temp));
+
+        } else {
+
+          mostrarDatosTextfield.setText("Ciudad no encontrada. Vuelva a intentarlo por favor.");
+        }
+      }
+
+      @Override
+      public void onFailure(Call<Tiempo> call, Throwable ilo) {
+
+        mostrarDatosTextfield.setText("Ha surgido un error de conexión, intentalo otra vez por favor: " + ilo.getMessage());
+      }
+
+
+    });
+  }
 }
