@@ -1,17 +1,9 @@
-/*
-Faris Mohamed Amine
-2 dam
-*/
-
-
 package com.example.conexion_retrofit_gson;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -24,6 +16,4 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.show();
     }
-
-
 }
