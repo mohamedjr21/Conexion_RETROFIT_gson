@@ -1,7 +1,6 @@
 package com.example.conexion_retrofit_gson.Controladores;
 
 import com.example.conexion_retrofit_gson.Api.APIservicio;
-import com.example.conexion_retrofit_gson.Controladores.Tiempo;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,10 +28,9 @@ public class HelloController {
     @FXML private ProgressBar barraHumedad;
     private final String claveAPI = "9693c5a9f86ef1b1aa621cd546973a28";
     private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
-
     private String traducirDescripcion(String descripcionDelTiempoTraducida) {
         return switch (descripcionDelTiempoTraducida.toLowerCase()) {
-            //*cpio las traducciones  aplicando terminos de usbailidad y que mi aplicacion
+            //*copio las traducciones  aplicando terminos de usbailidad y que mi aplicacion
             // no sea dificil de manejar o aprender a usar ya que la api funciona o muestra en ingles todo
             case "clear sky" -> "cielo despejado";
             case "few clouds" -> "algunas nubes";
@@ -50,7 +48,6 @@ public class HelloController {
             default -> descripcionDelTiempoTraducida;
         };
     }
-
     @FXML
     public void obtenerTiempo() {
         String ciudad = campoCiudad.getText().trim();
@@ -92,7 +89,6 @@ public class HelloController {
         });
         hiloAPI.start();
     }
-
     private void actualizarDatosTiempo(Tiempo tiempo) {
         Platform.runLater(() -> {
             campoTemperatura.setText(String.format("%.1f°C", tiempo.main.temp));
@@ -114,12 +110,10 @@ public class HelloController {
         etiquetaEstado.setText(mensaje);
         etiquetaEstado.setStyle("-fx-text-fill: #ff6b6b;");
     }
-
     private void resetearEstilos() {
         campoCiudad.setStyle("");
         etiquetaEstado.setStyle("");
     }
-
     private void actualizarEstadoExito() {
         String horaActual = LocalTime.now().format(formatoHora);
         UltimaActualizacion.setText("Ultima actualización: " + horaActual);
