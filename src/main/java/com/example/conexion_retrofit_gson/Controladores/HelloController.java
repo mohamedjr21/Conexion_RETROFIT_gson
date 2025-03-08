@@ -22,25 +22,43 @@ public class HelloController {
     @FXML private TextField campoViento;
     @FXML private TextField campoPresion;
     @FXML private TextField campoDescripcion;
-    @FXML private Label etiquetaSensacionTermica;
-    @FXML private Label etiquetaDireccionViento;
-    @FXML private Label etiquetaTendenciaPresion;
-    @FXML private Label etiquetaUltimaActualizacion;
+    @FXML private Label SensacionTermica;
+    @FXML private Label DireccionViento;
+    @FXML private Label UltimaActualizacion;
     @FXML private Label etiquetaEstado;
     @FXML private ProgressBar barraHumedad;
-
     private final String claveAPI = "9693c5a9f86ef1b1aa621cd546973a28";
     private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    private String traducirDescripcion(String descripcionDelTiempoTraducida) {
+        return switch (descripcionDelTiempoTraducida.toLowerCase()) {
+            //*cpio las traducciones  aplicando terminos de usbailidad y que mi aplicacion
+            // no sea dificil de manejar o aprender a usar ya que la api funciona o muestra en ingles todo
+            case "clear sky" -> "cielo despejado";
+            case "few clouds" -> "algunas nubes";
+            case "scattered clouds" -> "nubes dispersas";
+            case "broken clouds" -> "nuboso";
+            case "shower rain" -> "lluvia débil";
+            case "rain" -> "lluvia";
+            case "thunderstorm" -> "tormenta";
+            case "snow" -> "nieve";
+            case "mist" -> "niebla";
+            case "overcast clouds" -> "muy nuboso";
+            case "light rain" -> "lluvia ligera";
+            case "moderate rain" -> "lluvia moderada";
+            case "heavy rain" -> "lluvia intensa";
+            default -> descripcionDelTiempoTraducida;
+        };
+    }
 
     @FXML
     public void obtenerTiempo() {
         String ciudad = campoCiudad.getText().trim();
 
         if (ciudad.isEmpty()) {
-            mostrarError("Por favor, introduce una ciudad");
+            mostrarError("introduce una ciudad por favor");
             return;
         }
-
         resetearEstilos();
         etiquetaEstado.setText("Buscando datos del tiempo...");
 
@@ -60,15 +78,14 @@ public class HelloController {
                         actualizarDatosTiempo(response.body());
                     } else {
                         Platform.runLater(() ->
-                              mostrarError("Ciudad no encontrada. Verifica el nombre e inténtalo de nuevo.")
+                              mostrarError("Ciudad no fue encontrada. Revisa el nombre e inténtalo de nuevo.")
                         );
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Tiempo> call, Throwable t) {
                     Platform.runLater(() ->
-                          mostrarError("Error de conexión: " + t.getMessage())
+                          mostrarError("Ha habido un error de conexión: " + t.getMessage())
                     );
                 }
             });
@@ -82,11 +99,11 @@ public class HelloController {
             campoHumedad.setText(tiempo.main.humidity + "%");
             campoViento.setText(String.format("%.1f km/h", tiempo.wind.speed));
             campoPresion.setText(tiempo.main.pressure + " hPa");
-            campoDescripcion.setText(tiempo.weather.get(0).description);
+            campoDescripcion.setText(traducirDescripcion(tiempo.weather.get(0).description));
 
-            etiquetaSensacionTermica.setText(String.format("Sensación térmica: %.1f°C", tiempo.main.feels_like));
+            SensacionTermica.setText(String.format("Sensación térmica: %.1f°C", tiempo.main.feels_like));
             barraHumedad.setProgress(tiempo.main.humidity / 100.0);
-            etiquetaDireccionViento.setText(String.format("Dirección del viento: %d°", tiempo.wind.deg));
+            DireccionViento.setText(String.format("Dirección del viento: %d°", tiempo.wind.deg));
 
             actualizarEstadoExito();
         });
@@ -105,7 +122,7 @@ public class HelloController {
 
     private void actualizarEstadoExito() {
         String horaActual = LocalTime.now().format(formatoHora);
-        etiquetaUltimaActualizacion.setText("Última actualización: " + horaActual);
+        UltimaActualizacion.setText("Ultima actualización: " + horaActual);
         etiquetaEstado.setText("Datos actualizados correctamente");
         etiquetaEstado.setStyle("-fx-text-fill: #4CAF50;");
     }

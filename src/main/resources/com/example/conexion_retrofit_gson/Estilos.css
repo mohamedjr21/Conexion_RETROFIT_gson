@@ -2,26 +2,22 @@
     -fx-background-color: linear-gradient(to bottom right, #1a1a2e, #16213e);
     -fx-font-family: 'Segoe UI';
 }
-
 .header {
     -fx-padding: 30px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 0);
 }
-
 .title {
     -fx-text-fill: #ffffff;
     -fx-font-size: 36px;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.2), 15, 0, 0, 0);
 }
-
 .search-box {
     -fx-background-color: rgba(255,255,255,0.1);
     -fx-background-radius: 20px;
     -fx-padding: 20px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
 }
-
 .search-box TextField {
     -fx-background-color: rgba(255,255,255,0.15);
     -fx-text-fill: white;
@@ -30,7 +26,6 @@
     -fx-padding: 12px;
     -fx-font-size: 14px;
 }
-
 .search-button {
     -fx-background-color: #4361ee;
     -fx-text-fill: white;
@@ -40,14 +35,12 @@
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(67,97,238,0.3), 8, 0, 0, 0);
 }
-
 .search-button:hover {
     -fx-background-color: #3250d9;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow(gaussian, rgba(67,97,238,0.4), 12, 0, 0, 0);
 }
-
 .weather-card {
     -fx-background-color: rgba(255,255,255,0.1);
     -fx-background-radius: 15px;
@@ -64,13 +57,11 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 12, 0, 0, 0);
     -fx-translate-y: -2;
 }
-
 .card-title {
     -fx-text-fill: #90e0ef;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
-
 .data-field {
     -fx-background-color: transparent;
     -fx-text-fill: white;
@@ -79,13 +70,11 @@
     -fx-alignment: CENTER;
     -fx-border-color: transparent;
 }
-
 .sub-info {
     -fx-text-fill: #caf0f8;
     -fx-font-size: 13px;
     -fx-opacity: 0.9;
 }
-
 .progress-bar {
     -fx-accent: #4361ee;
     -fx-min-width: 150px;
@@ -95,24 +84,20 @@
     -fx-background-color: rgba(255,255,255,0.1);
     -fx-background-radius: 5px;
 }
-
 .progress-bar .bar {
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(67,97,238,0.3), 5, 0, 0, 0);
 }
-
 .status-bar {
     -fx-padding: 15px;
     -fx-background-color: rgba(255,255,255,0.05);
     -fx-background-radius: 10px;
     -fx-spacing: 10px;
 }
-
 .status-bar Label {
     -fx-text-fill: #8899ac;
     -fx-font-size: 13px;
 }
-
 .weather-card {
     -fx-transition: all 0.3s ease;
 }
@@ -121,25 +106,15 @@ TextField:focused {
     -fx-background-color: rgba(255,255,255,0.2);
     -fx-effect: dropshadow(gaussian, rgba(67,97,238,0.3), 8, 0, 0, 0);
 }
-
 .error-message {
     -fx-text-fill: #ff6b6b;
     -fx-font-size: 13px;
     -fx-padding: 5px;
 }
-
 .weather-icon {
     -fx-opacity: 0.9;
     -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.2), 10, 0, 0, 0);
 }
-
-@media (max-width: 800px) {
-    .weather-grid {
-        -fx-hgap: 10;
-        -fx-vgap: 10;
-    }
-
-    .weather-card {
+ather-card {
         -fx-min-width: 180px;
     }
-}

@@ -15,7 +15,7 @@
 
    <HBox alignment="CENTER" spacing="15" styleClass="header">
       <ImageView fitHeight="50" fitWidth="50">
-         <Image url="@foto.png"/>
+         <Image url="@img.png"/>
       </ImageView>
       <Label styleClass="title" text="Tiempo"/>
    </HBox>
@@ -29,7 +29,7 @@
       <VBox styleClass="weather-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
          <Label text="Temperatura" styleClass="card-title"/>
          <TextField fx:id="campoTemperatura" editable="false" styleClass="data-field"/>
-         <Label fx:id="etiquetaSensacionTermica" styleClass="sub-info"/>
+         <Label fx:id="SensacionTermica" styleClass="sub-info"/>
       </VBox>
 
       <VBox styleClass="weather-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -41,13 +41,13 @@
       <VBox styleClass="weather-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
          <Label text="Velocidad del Viento" styleClass="card-title"/>
          <TextField fx:id="campoViento" editable="false" styleClass="data-field"/>
-         <Label fx:id="etiquetaDireccionViento" styleClass="sub-info"/>
+         <Label fx:id="DireccionViento" styleClass="sub-info"/>
       </VBox>
 
       <VBox styleClass="weather-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <Label text="Presión" styleClass="card-title"/>
          <TextField fx:id="campoPresion" editable="false" styleClass="data-field"/>
-         <Label fx:id="etiquetaTendenciaPresion" styleClass="sub-info"/>
+         <Label fx:id="EtiquetaTendenciaPresion" styleClass="sub-info"/>
       </VBox>
 
       <VBox styleClass="weather-card" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
@@ -57,7 +57,7 @@
    </GridPane>
 
    <HBox styleClass="status-bar" alignment="CENTER_LEFT">
-      <Label fx:id="etiquetaUltimaActualizacion" text="Última actualización: Nunca"/>
+      <Label fx:id="UltimaActualizacion" text="Última actualización: Nunca"/>
       <Region HBox.hgrow="ALWAYS"/>
       <Label fx:id="etiquetaEstado" text="Listo"/>
    </HBox>
